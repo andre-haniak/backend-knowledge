@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/knowledge_stats', {
+mongoose.connect('mongodb+srv://knowledge:knowledge@knowledge-stats-jl37c.mongodb.net/test?retryWrites=true', {
         useNewUrlParser: true
     })
     .catch(e => {
