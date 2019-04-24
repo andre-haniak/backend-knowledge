@@ -89,9 +89,12 @@ module.exports = app => {
 
     const getByCategory = async (req, res) => {
         const categoryId = req.params.id
+        console.log(categoryId)
         const page = req.query.page || 1
         const categories = await app.db.raw(queries.categoryWithChildren, categoryId)
+        console.log(categories)
         const ids = categories.rows.map(c => c.id)
+        console.log(ids)
 
         app.db({
                 a: 'articles',
@@ -104,7 +107,7 @@ module.exports = app => {
             .whereRaw('?? = ??', ['u.id', 'a.userId'])
             .whereIn('categoryId', ids)
             .orderBy('a.id', 'desc')
-            .then(articles => res.json(articles))
+            .then(articles => res.json(articles)(console.log(articles)))
             .catch(err => res.status(500).send(err))
     }
 

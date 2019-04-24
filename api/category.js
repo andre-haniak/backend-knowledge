@@ -10,7 +10,7 @@ module.exports = app => {
             name: req.body.name,
             parentId: req.body.parentId
         }
-
+        console.log(req.body)
         if (req.params.id) category.id = req.params.id
 
         try {

@@ -16,6 +16,17 @@ module.exports = app => {
         .get(admin(app.api.user.getById))
         .delete(admin(app.api.user.remove))
 
+    app.route('/point')
+        //.all(app.config.passport.authenticate())
+        .post(app.api.point.save)
+        .get(app.api.point.get)
+
+    app.route('/point/:id')
+        //.all(app.config.passport.authenticate())
+        .put(app.api.point.save)
+        .get(app.api.point.getById)
+        .delete(app.api.point.remove)
+
     app.route('/categories')
         .all(app.config.passport.authenticate())
         .get(admin(app.api.category.get))
@@ -31,6 +42,17 @@ module.exports = app => {
         .get(app.api.category.getById)
         .put(admin(app.api.category.save))
         .delete(admin(app.api.category.remove))
+
+    app.route('/evaluation')
+        //.all(app.config.passport.authenticate())
+        .post(app.api.evaluation.save)
+        .get(app.api.evaluation.get)
+
+    app.route('/evaluation/:id')
+        //.all(app.config.passport.authenticate())
+        .put(app.api.evaluation.save)
+        .get(app.api.evaluation.getById)
+        .delete(app.api.evaluation.remove)
 
     app.route('/articles')
         .all(app.config.passport.authenticate())
